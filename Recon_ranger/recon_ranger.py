@@ -84,3 +84,8 @@ class ReconRanger:
         subprocess.run(f"qsreplace -u {self.target} -o {self.output_dir}/qsreplace_xss.txt", shell=True)
         subprocess.run(f"dalfox -u {self.target} -o {self.output_dir}/dalfox_xss.txt", shell=True)
 
+    #Open Redirections
+    def open_redirection(self):
+        print("Identifying Open Redirections...")
+        subprocess.run(f"uro -u {self.target} -o {self.output_dir}/open_redirection.txt", shell=True)
+
