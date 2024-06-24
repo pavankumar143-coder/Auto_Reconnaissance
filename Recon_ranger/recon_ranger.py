@@ -52,3 +52,9 @@ class ReconRanger:
         print("Finding Open Ports...")
         subprocess.run(f"naabu -host {self.target} -o {self.output_dir}/open_ports.txt", shell=True)
 
+    #JSON Files Finding
+    def json_files_discovery(self):
+        print("Searching for JSON Files...")
+        subprocess.run(f"waybackurls {self.target} -o {self.output_dir}/json_files.txt", shell=True)
+
+
