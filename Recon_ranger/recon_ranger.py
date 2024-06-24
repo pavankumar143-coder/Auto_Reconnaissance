@@ -57,4 +57,12 @@ class ReconRanger:
         print("Searching for JSON Files...")
         subprocess.run(f"waybackurls {self.target} -o {self.output_dir}/json_files.txt", shell=True)
 
+    #Javascript Finding
+    def js_vulnerabilities(self):
+        print("Identifying JavaScript Vulnerabilities...")
+        subprocess.run(f"katana -u {self.target} -o {self.output_dir}/js_vulnerabilities.txt", shell=True)
+        subprocess.run(f"subjs -u {self.target} -o {self.output_dir}/subjs.txt", shell=True)
+        subprocess.run(f"httpx -u {self.target} -o {self.output_dir}/httpx_js.txt", shell=True)
+        subprocess.run(f"nuclei -u {self.target} -o {self.output_dir}/nuclei_js.txt", shell=True)
+
 
