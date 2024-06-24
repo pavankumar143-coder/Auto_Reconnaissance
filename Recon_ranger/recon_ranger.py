@@ -94,3 +94,16 @@ class ReconRanger:
         print("Performing Comprehensive Vulnerability Scanning...")
         subprocess.run(f"nuclei -u {self.target} -o {self.output_dir}/nuclei_vulnerabilities.txt", shell=True)
 
+    def run_recon(self):
+        self.subdomain_enum()
+        self.live_subdomains()
+        self.subdomain_takeover()
+        self.open_ports()
+        self.json_files_discovery()
+        self.js_vulnerabilities()
+        self.directory_enumeration()
+        self.injection_vulnerabilities()
+        self.xss_vulnerabilities()
+        self.open_redirection()
+        self.comprehensive_vulnerability_scanning()
+
