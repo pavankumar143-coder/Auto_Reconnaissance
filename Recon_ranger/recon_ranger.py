@@ -69,5 +69,11 @@ class ReconRanger:
     def directory_enumeration(self):
         print("Discovering Hidden Directories...")
         subprocess.run(f"dirsearch -u {self.target} -o {self.output_dir}/directories.txt", shell=True)
-
+    
+    #Finding Injection
+    def injection_vulnerabilities(self):
+        print("Finding Injection Vulnerabilities...")
+        subprocess.run(f"gospider -u {self.target} -o {self.output_dir}/injection_vulnerabilities.txt", shell=True)
+        subprocess.run(f"qsreplace -u {self.target} -o {self.output_dir}/qsreplace.txt", shell=True)
+        subprocess.run(f"dalfox -u {self.target} -o {self.output_dir}/dalfox.txt", shell=True)
 
