@@ -2,6 +2,7 @@ import os
 import subprocess
 import requests
 import json
+import argparse
 from colorama import Fore, Style, init
 import pyfiglet
 
@@ -106,4 +107,11 @@ class ReconRanger:
         self.xss_vulnerabilities()
         self.open_redirection()
         self.comprehensive_vulnerability_scanning()
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="ReconRanger Tool")
+    parser.add_argument("target", help="Target website")
+    args = parser.parse_args()
+    recon_ranger = ReconRanger(args.target)
+    recon_ranger.run_recon()
 
