@@ -41,3 +41,9 @@ class ReconRanger:
     def live_subdomains(self):
         print("Identifying Live Subdomains...")
         subprocess.run(f"httpx -l -o {self.output_dir}/live_subdomains.txt {self.output_dir}/subdomains.txt", shell=True)
+        
+    #Subdomain Takeovers
+    def subdomain_takeover(self):
+        print("Checking for Subdomain Takeovers...")
+        subprocess.run(f"subzy -d {self.target} -o {self.output_dir}/subdomain_takeover.txt", shell=True)
+
