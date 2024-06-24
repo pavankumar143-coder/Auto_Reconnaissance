@@ -76,4 +76,11 @@ class ReconRanger:
         subprocess.run(f"gospider -u {self.target} -o {self.output_dir}/injection_vulnerabilities.txt", shell=True)
         subprocess.run(f"qsreplace -u {self.target} -o {self.output_dir}/qsreplace.txt", shell=True)
         subprocess.run(f"dalfox -u {self.target} -o {self.output_dir}/dalfox.txt", shell=True)
+    
+    #Finding XSS 
+    def xss_vulnerabilities(self):
+        print("Detecting XSS Vulnerabilities...")
+        subprocess.run(f"gospider -u {self.target} -o {self.output_dir}/xss_vulnerabilities.txt", shell=True)
+        subprocess.run(f"qsreplace -u {self.target} -o {self.output_dir}/qsreplace_xss.txt", shell=True)
+        subprocess.run(f"dalfox -u {self.target} -o {self.output_dir}/dalfox_xss.txt", shell=True)
 
