@@ -88,4 +88,9 @@ class ReconRanger:
     def open_redirection(self):
         print("Identifying Open Redirections...")
         subprocess.run(f"uro -u {self.target} -o {self.output_dir}/open_redirection.txt", shell=True)
+    
+    #Finding Comprehensive
+    def comprehensive_vulnerability_scanning(self):
+        print("Performing Comprehensive Vulnerability Scanning...")
+        subprocess.run(f"nuclei -u {self.target} -o {self.output_dir}/nuclei_vulnerabilities.txt", shell=True)
 
