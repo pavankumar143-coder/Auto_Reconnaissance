@@ -65,4 +65,9 @@ class ReconRanger:
         subprocess.run(f"httpx -u {self.target} -o {self.output_dir}/httpx_js.txt", shell=True)
         subprocess.run(f"nuclei -u {self.target} -o {self.output_dir}/nuclei_js.txt", shell=True)
 
+    #Hindden Directories Finding
+    def directory_enumeration(self):
+        print("Discovering Hidden Directories...")
+        subprocess.run(f"dirsearch -u {self.target} -o {self.output_dir}/directories.txt", shell=True)
+
 
