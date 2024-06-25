@@ -23,6 +23,8 @@ Usage:
 Clone the repository: git clone https://github.com/pavankumar143-coder/Auto_Reconnaissance.git
 Change into the repository directory: cd Auto_Reconnaissance/Recon_ranger
 pip install -r requirements.txt
+chmod +x go_tools.sh
+./go_tools.sh
 Run the script: python recon_ranger.py <target_website>
 
 Replace <target_website> with the website you want to scan.
