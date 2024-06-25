@@ -1,25 +1,41 @@
 #!/bin/bash
 
-# Update Go to the latest version
-sudo apt update && sudo apt install golang-go -y
+# Set GOBIN and GOPATH environment variables
+export GOBIN=/root/go/bin
+export GOPATH=/root/go
+export PATH=$GOBIN:$PATH
 
-# Set GOPATH and PATH environment variables
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
+# Create Go directory and navigate to it
+mkdir -p $GOPATH
+cd $GOPATH
 
-# Create the GOPATH directory if it doesn't exist
-mkdir -p $GOPATH/bin
+# Clone and install each repository
+repos=(
+    "https://github.com/tomnomnom/assetfinder.git"
+    "https://github.com/Findomain/Findomain.git"
+    "https://github.com/projectdiscovery/httpx.git"
+    "https://github.com/PentestPad/subzy.git"
+    "https://github.com/projectdiscovery/naabu.git"
+    "https://github.com/tomnomnom/waybackurls.git"
+    "https://github.com/projectdiscovery/katana.git"
+    "https://github.com/lc/subjs.git"
+    "https://github.com/projectdiscovery/nuclei.git"
+    "https://github.com/maurosoria/dirsearch.git"
+    "https://github.com/jaeles-project/gospider.git"
+    "https://github.com/tomnomnom/qsreplace.git"
+    "https://github.com/hahwul/dalfox.git"
+    "https://github.com/s0md3v/uro.git"
+    "https://github.com/tomnomnom/gf.git"
+)
 
-# Install the Go repositories
-go get -u github.com/tomnomnom/assetfinder
-go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-go install -v github.com/LukaSikic/subzy@latest
-go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
-go install github.com/tomnomnom/waybackurls@latest
-go install github.com/projectdiscovery/katana/cmd/katana@latest
-GO111MODULE=on go get -u -v github.com/lc/subjs@latest
-go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
-GO111MODULE=on go install github.com/jaeles-project/gospider@latest
-go install github.com/tomnomnom/qsreplace@latest
-go install github.com/hahwul/dalfox/v2@latest
-go get -u github.com/tomnomnom/gf
+for repo in "${repos[@]}"; do
+    repo_name=$(basename "$repo" | cut -d '.' -f1)
+    git clone "$repo"
+    cd "$repo_name"
+    go build .
+    go install .
+    cd ..
+done
+
+# Add Go bin to PATH in /root/.zshrc
+echo "export PATH=$GOBIN:$PATH" >> /root/.zshrc
