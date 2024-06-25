@@ -2,3 +2,4 @@ subfinder
 findomain
 dirsearch
 uro
+colorama
