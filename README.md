@@ -19,7 +19,8 @@ The script takes a target website as an argument. <br>
 13)The run_recon method runs all the reconnaissance methods in sequence. <br>
 
 Usage: <br>
-
+Open the Kali Terminal Type this command:sudo su
+install naabu : apt install naabu
 Clone the repository: git clone https://github.com/pavankumar143-coder/Auto_Reconnaissance.git <br>
 Change into the repository directory: cd Auto_Reconnaissance/Recon_ranger <br>
 pip install -r requirements.txt <br>
