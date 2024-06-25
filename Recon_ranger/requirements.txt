@@ -1,16 +1,4 @@
 subfinder
-assetfinder
 findomain
-httpx
-subzy
-naabu
-waybackurls
-katana
-subjs
-nuclei
 dirsearch
-gospider
-qsreplace
-dalfox
 uro
-gf
