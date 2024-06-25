@@ -33,6 +33,7 @@ class ReconRanger:
 
     #Subdomain Enumeration
     def subdomain_enum(self):
+        main_title = "Subdomain Finding"
         print("Performing Subdomain Enumeration...")
         subprocess.run(f"subfinder -d {self.target} -o {self.output_dir}/subdomains.txt", shell=True)
         subprocess.run(f"assetfinder -d {self.target} -o {self.output_dir}/assetfinder.txt", shell=True)
@@ -40,26 +41,31 @@ class ReconRanger:
 
     #Live Subdomains
     def live_subdomains(self):
+        main_title = "Live Subdomains"
         print("Identifying Live Subdomains...")
         subprocess.run(f"httpx -l -o {self.output_dir}/live_subdomains.txt {self.output_dir}/subdomains.txt", shell=True)
 
     #Subdomain Takeovers
     def subdomain_takeover(self):
+        main_title = "Subdomain Takeovers"
         print("Checking for Subdomain Takeovers...")
         subprocess.run(f"subzy -d {self.target} -o {self.output_dir}/subdomain_takeover.txt", shell=True)
 
     #Finding Open Ports
     def open_ports(self):
+        main_title = "Finding Open Ports"
         print("Finding Open Ports...")
         subprocess.run(f"naabu -host {self.target} -o {self.output_dir}/open_ports.txt", shell=True)
 
     #JSON Files Finding
     def json_files_discovery(self):
+        main_title = "Searching JSON"
         print("Searching for JSON Files...")
         subprocess.run(f"waybackurls {self.target} -o {self.output_dir}/json_files.txt", shell=True)
 
     #Javascript Finding
     def js_vulnerabilities(self):
+        main_title = "Finding Js Files"
         print("Identifying JavaScript Vulnerabilities...")
         subprocess.run(f"katana -u {self.target} -o {self.output_dir}/js_vulnerabilities.txt", shell=True)
         subprocess.run(f"subjs -u {self.target} -o {self.output_dir}/subjs.txt", shell=True)
@@ -68,11 +74,13 @@ class ReconRanger:
 
     #Hindden Directories Finding
     def directory_enumeration(self):
+        main_title = "Hidden Direct"
         print("Discovering Hidden Directories...")
         subprocess.run(f"dirsearch -u {self.target} -o {self.output_dir}/directories.txt", shell=True)
     
     #Finding Injection
     def injection_vulnerabilities(self):
+        main_title = "Finding injection"
         print("Finding Injection Vulnerabilities...")
         subprocess.run(f"gospider -u {self.target} -o {self.output_dir}/injection_vulnerabilities.txt", shell=True)
         subprocess.run(f"qsreplace -u {self.target} -o {self.output_dir}/qsreplace.txt", shell=True)
@@ -80,6 +88,7 @@ class ReconRanger:
     
     #Finding XSS 
     def xss_vulnerabilities(self):
+        main_title = "Finding XSS"
         print("Detecting XSS Vulnerabilities...")
         subprocess.run(f"gospider -u {self.target} -o {self.output_dir}/xss_vulnerabilities.txt", shell=True)
         subprocess.run(f"qsreplace -u {self.target} -o {self.output_dir}/qsreplace_xss.txt", shell=True)
@@ -87,6 +96,7 @@ class ReconRanger:
 
     #Open Redirections
     def open_redirection(self):
+        main_title = "find open Redirect"
         print("Identifying Open Redirections...")
         subprocess.run(f"uro -u {self.target} -o {self.output_dir}/open_redirection.txt", shell=True)
     
