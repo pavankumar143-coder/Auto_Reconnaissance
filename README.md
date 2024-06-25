@@ -21,7 +21,7 @@ The script takes a target website as an argument.
 Usage:
 
 Clone the repository: git clone https://github.com/pavankumar143-coder/Auto_Reconnaissance.git
-Change into the repository directory: cd Recon_ranger
+Change into the repository directory: cd Auto_Reconnaissance/Recon_ranger
 pip install -r requirements.txt
 Run the script: python recon_ranger.py <target_website>
 
