@@ -63,7 +63,7 @@ class ReconRanger:
     def json_files_discovery(self):
         main_title = "Searching JSON"
         print("Searching for JSON Files...")
-        #subprocess.run(f"waybackurls {self.target} -o {self.output_dir}/json_files.txt", shell=True)
+        subprocess.run(f"waybackurls {self.target} -o {self.output_dir}/json_files.txt", shell=True)
         subprocess.run(f"cat {self.output_dir}/live_subdomains.txt  | waybackurls > {self.output_dir}/json_files.txt", shell=True)
 
 
