@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import subprocess
 import requests
@@ -10,19 +11,50 @@ import pyfiglet
 init()
 
 # Define the text
-main_title = "AUTOMATED_RECON"
-sub_title = "                Created By Pavan Kumar Tule"
+#main_title = "AUTOMATED_RECON"
+#sub_title = "                             Developed By Pavan Kumar Tule"
 
 # Use pyfiglet to create the large text
-main_title_fig = pyfiglet.figlet_format(main_title)
-sub_title_fig = pyfiglet.figlet_format(sub_title)
+#main_title_fig = pyfiglet.figlet_format(main_title)
+#sub_title_fig = pyfiglet.figlet_format(sub_title)
 
 # Print the text with green color
-print(f"{Fore.GREEN}{main_title_fig}{Style.RESET_ALL}")
-print(f"{Fore.GREEN}{sub_title_fig}{Style.RESET_ALL}")
+#print(f"{Fore.RED}{main_title_fig}{Style.RESET_ALL}")
+#print(f"{Fore.RED}{sub_title_fig}{Style.RESET_ALL}")
 
 # Keep the script running so the text remains visible
 #input("Press Enter to exit...")
+#main_title = "AUTOMATED RECON"
+main_title = r"""  
+                  /      \
+                 ( Pavan's !
+                    Sec  )                                                                                                                                  
+                  \  ____/                      )                                                                                                            
+                  ,,                           ) (_                                                                                                          
+             .-. -    _______                 ( |__|                                                                                                         
+            ()``; |==|_______)                .)|__|                                                                                                         
+            / ('        /|\                  (  |__|                                                                                                         
+        (  /  )        / | \                  . |__|                                                                                                         
+         \(_)_))      /  |  \                   |__| 
+
+"""
+
+
+
+
+sub_title = "Developed By Pavan Kumar Tule (Ethical Hacker)"
+github_id = "GitHub:https://pavankumar143-coder.github.io/Portfolio/"
+# Big title
+#main_title_fig = pyfiglet.figlet_format(main_title, font="slant")
+
+print(Fore.GREEN +  main_title)
+
+# Subtitle
+print(Fore.RED + sub_title.center(80) + Style.RESET_ALL)
+
+# GitHub ID (small + clean)
+print(Fore.CYAN + github_id.center(80) + Style.RESET_ALL)
+
 
 class ReconRanger:
     def __init__(self, target):
@@ -31,11 +63,18 @@ class ReconRanger:
         if not os.path.exists(self.output_dir):
             os.makedirs(self.output_dir)
 
+
+
     #Subdomain Enumeration
     def subdomain_enum(self):
         main_title = "Subdomain Finding"
+        print("  ")
         print("Performing Subdomain Enumeration...")
-        subprocess.run(f"subfinder -d {self.target} -o {self.output_dir}/subdomains.txt", shell=True)
+        subprocess.run(f"""subfinder -silent -d {self.target} | dnsx -silent -a -resp | while read d ip; do waf=$(wafw00f $d 2>/dev/null | grep "behind" | sed 's/.*behind //'); [ -z "$waf" ] && waf="No WAF"; if echo "$waf" | grep -i cloudflare >/dev/null; then echo -e "\\033[31m$d $ip -> $waf\\033[0m"; else echo -e "\\033[32m$d $ip -> $waf\\033[0m"; fi; done""", shell=True)
+        print("  ")
+        print("Domain Registration Finding")
+        subprocess.run(f"whois {self.target} | grep -i 'registrar'", shell=True)
+       #subprocess.run(f"subfinder -silent -d {self.target} | dnsx -silent -a -resp | awk '{ip=$2; if(ip ~ /^(104\.|172\.|198\.41\.)/) print "\033[31m"$0" -> Cloudflare\033[0m"; else print "\033[32m"$0" -> Public IP\033[0m"}' ", shell=True)
         subprocess.run(f"assetfinder -d {self.target} -o {self.output_dir}/assetfinder.txt", shell=True)
         subprocess.run(f"findomain -t {self.target} -o {self.output_dir}/findomain.txt", shell=True)
 
