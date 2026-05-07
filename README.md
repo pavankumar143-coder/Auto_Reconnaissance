@@ -14,7 +14,7 @@ JS Analysis: Hunting for vulnerabilities in JavaScript files using nuclei and ka
 How It Works
 The script follows a structured reconnaissance pipeline:
 
-1)Subdomain Enum (subfinder, assetfinder, findomain): Discovers all possible subdomains.Live 
+1)Subdomain Enum (subfinder, assetfinder, findomain): Discovers all possible subdomains.Live /n
 2)Check (httpx): Filters for active hosts and detects WAF.Takeover Check 
 3)(subzy): Checks for potential subdomain takeovers.
 4)Port Scanning (naabu): Identifies open ports on target hosts.Archive 
