@@ -1,35 +1,59 @@
-# Auto_Reconnaissance
-The automated script designed for comprehensive security assessments and reconnaissance of web domains. This tool leverages multiple powerful security tools to find and enumerate subdomains, check for live hosts, identify open ports, discover hidden directories, and test for various vulnerabilities including XSS, LFI, open redirections, and more.
+------------------------------
+Auto_Reconnaissance
+Auto_Reconnaissance is a powerful automated script designed for comprehensive security assessments and web domain reconnaissance. It integrates industry-standard security tools into a single workflow to help bug hunters and security researchers identify vulnerabilities and infrastructure protections efficiently.
+------------------------------
+Key Features
+This tool leverages a suite of powerful security utilities to perform:
+WAF Detection: Automatically identifies if a target is protected by a Web Application Firewall.
+Subdomain Discovery: Enumeration using subfinder, assetfinder, and findomain.
+Live Host Probing: Identifying active subdomains via httpx.
+Vulnerability Scanning: Detecting XSS, LFI, SQLi, and Open Redirections.
+Asset Analysis: Finding open ports, hidden directories, and sensitive JSON files.
+JS Analysis: Hunting for vulnerabilities in JavaScript files using nuclei and katana.
+------------------------------
+How It Works
+The script follows a structured reconnaissance pipeline:
 
-Here's how the script works:
+1)Subdomain Enum (subfinder, assetfinder, findomain): Discovers all possible subdomains.Live 
+2)Check (httpx): Filters for active hosts and detects WAF.Takeover Check 
+3)(subzy): Checks for potential subdomain takeovers.
+4)Port Scanning (naabu): Identifies open ports on target hosts.Archive 
+5)Search (waybackurls): Discovers JSON files from web archives.JS Inspection 
+6)(katana, subjs, nuclei): Scans JS files for security flaws.Directory Brute 
+7)(dirsearch): Finds hidden files and directories.Injections (gospider, qsreplace, dalfox): Tests for LFI, CRLF, and SQLi.XSS and Redirect 
+8)(dalfox, uro): Specifically targets XSS and Open Redirections.Full Scan 
+9)(nuclei): Comprehensive vulnerability scan on live targets.
+------------------------------
+Installation & Setup
+Ensure you are using Kali Linux for the best compatibility.
 
-The script takes a target website as an argument. <br>
-1)It creates acreates a directory for the output files with the target as the name. <br>
-2)The subdomain_enum method uses subfinder, assetfinder, and findomain to discover subdomains. <br>
-3)The live_subdomains method uses httpx to identify live subdomains. <br>
-4)The subdomain_takeover method uses subzy to check for potential subdomain takeovers. <br>
-5)The open_ports method uses naabu to find open ports. <br>
-6)The json_files_discovery method uses waybackurls to search for JSON files in the web archive. <br>
-7)The js_vulnerabilities method uses katana, subjs, httpx, and nuclei to identify potential vulnerabilities in JavaScript files. <br>
-8)The dir_enum method uses dirsearch to discover hidden directories. <br>
-9)The injection_vulnerabilities method uses gospider, qsreplace, and dalfox to find injection vulnerabilities like LFI, CRLF, SQLi, and more. <br>
-10)The xss_vulnerabilities method uses gospider, qsreplace, and dalfox to detect XSS vulnerabilities. <br>
-11)The open_redirection method uses uro to identify open redirection vulnerabilities. <br>
-12)The comprehensive_vulnerability_scanning method uses nuclei for detailed scanning of live subdomains. <br>
-13)The run_recon method runs all the reconnaissance methods in sequence. <br>
+   1. Prerequisites
 
-Usage: <br>
-Open the Kali Terminal Type this command:sudo su <br>
-install naabu : apt install naabu <br>
-Clone the repository: git clone https://github.com/pavankumar143-coder/Auto_Reconnaissance.git <br>
-Change into the repository directory: cd Auto_Reconnaissance/Recon_ranger <br>
-pip install -r requirements.txt <br>
-chmod +x go_tools.sh <br>
-./go_tools.sh <br>
-Run the script: python recon_ranger.py <target_website> <br>
+sudo su
+apt install naabu -y
 
-Replace <target_website> with the website you want to scan. <br>
 
-Note: <br>
+   1. Clone & Install
 
-This script is for educational purposes only and should not be used without permission from the target website's owner. Always respect the website's terms of service and robots.txt file. <br>
+git clone https://github.com
+cd Auto_Reconnaissance/Recon_ranger
+pip install -r requirements.txt
+
+
+   1. Permissions & Tool Setup
+
+chmod +x go_tools.sh
+./go_tools.sh
+
+------------------------------
+Usage
+To start a scan, run the following command:
+
+python recon_ranger.py <target_website>
+
+Replace <target_website> with your target domain (e.g., example.com).
+------------------------------
+Disclaimer
+Important: This script is for educational purposes only. Do not use it on targets without explicit, written permission from the owner. Always adhere to the website's Terms of Service and robots.txt guidelines.
+------------------------------
+
