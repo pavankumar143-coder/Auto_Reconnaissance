@@ -1,6 +1,6 @@
 ------------------------------
 Auto_Reconnaissance
-Auto_Reconnaissance is a powerful automated script designed for comprehensive security assessments and web domain reconnaissance. It integrates industry-standard security tools into a single workflow to help bug hunters and security researchers identify vulnerabilities and infrastructure protections efficiently.
+Auto_Reconnaissance is a powerful automated script designed for comprehensive security assessments and web domain reconnaissance. It integrates industry standard security tools into a single workflow to help bug hunters and security researchers identify vulnerabilities and infrastructure protections efficiently.
 ------------------------------
 Key Features
 This tool leverages a suite of powerful security utilities to perform:
@@ -14,7 +14,7 @@ JS Analysis: Hunting for vulnerabilities in JavaScript files using nuclei and ka
 How It Works
 The script follows a structured reconnaissance pipeline:
 
-1)Subdomain Enum (subfinder, assetfinder, findomain): Discovers all possible subdomains.Live /n
+1)Subdomain Enum (subfinder, assetfinder, findomain): Discovers all possible subdomains.Live 
 2)Check (httpx): Filters for active hosts and detects WAF.Takeover Check 
 3)(subzy): Checks for potential subdomain takeovers.
 4)Port Scanning (naabu): Identifies open ports on target hosts.Archive 
